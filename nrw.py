@@ -84,7 +84,7 @@ def volume_data():
 
 
 ######################
-@app.route("/api/daily-flow", methods=["GET"])
+@app.route("/daily-flow", methods=["GET"])
 def daily_flow_report():
     month_str = request.args.get("month")  # format: YYYY-MM
     if not month_str:

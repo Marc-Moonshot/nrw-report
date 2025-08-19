@@ -6,6 +6,13 @@ services:
     ports:
       - "8000:8000"
     restart: always
+  nrw-app:
+    build:
+    context: ./nrw-app
+    dockerfile: dockerfile
+    ports:
+      - "3000"
+    restart: always
   nginx:
     image: "nginx:alpine"
     ports:
@@ -16,4 +23,5 @@ services:
       - /etc/letsencrypt:/etc/letsencrypt:ro   
     depends_on: 
       - nrw-api
+      - nrw-app
     restart: always
