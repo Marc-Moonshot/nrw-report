@@ -10,13 +10,15 @@
     month: "long",
   })
 
-  const breakdownData = data
-    ? data.daily_nrws.map((nrw) => ({
-        date: nrw.date.split("-")[2],
-        billed: nrw.est_billed,
-        nrw: nrw.est_nrw,
-      }))
-    : []
+  const breakdownData = $derived(
+    data
+      ? data.daily_nrws.map((nrw) => ({
+          date: nrw.date.split("-")[2],
+          billed: nrw.est_billed,
+          nrw: nrw.est_nrw,
+        }))
+      : []
+  )
 </script>
 
 <div class="flex flex-col w-full h-[30rem] border rounded-sm p-4">

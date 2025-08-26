@@ -3,7 +3,6 @@
 
   const { data }: { data: YearlyNRWData | null } = $props()
 
-  // Convert Record -> Array
   const chartData = data
     ? Object.entries(data).map(([month, values]) => ({
         month,
