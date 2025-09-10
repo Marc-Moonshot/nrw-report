@@ -130,7 +130,8 @@ def get_daily_nrw():
 
         # --- WTP rows (ALL) ---
         for day in range(1, days_in_month + 1):
-            flow = daily_flows[day - 1] if day - 1 < len(daily_flows) else 0
+            # flow = daily_flows[day - 1] if day - 1 < len(daily_flows) else 0
+            flow = (daily_flows[day - 1] or 0) if day - 1 < len(daily_flows) else 0 #safely handle cases where flow is None
             nrw_m3, nrw_pct = calculate_nrw(flow, billed_per_day)
             rows.append({
                 "wtp": wtp_name.upper() if device else "",
