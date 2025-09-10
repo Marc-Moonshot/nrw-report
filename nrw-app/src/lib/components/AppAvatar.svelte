@@ -1,7 +1,6 @@
 <script lang="ts">
   import * as Avatar from "$lib/components/ui/avatar/index"
   import UserIcon from "@lucide/svelte/icons/user"
-  import Button from "$lib/components/ui/button/button.svelte"
   import {
     DropdownMenu,
     DropdownMenuTrigger,
@@ -11,21 +10,13 @@
   import { auth } from "$lib/client"
   import {
     GoogleAuthProvider,
-    onAuthStateChanged,
     signInWithPopup,
     signOut,
     type User,
   } from "firebase/auth"
-  import { onMount } from "svelte"
 
-  let user: User | null = null
+  export let user: User | null
 
-  // Restore user from Firebase on page load
-  onMount(() => {
-    return onAuthStateChanged(auth, (u) => {
-      user = u
-    })
-  })
   const login = async () => {
     try {
       const provider = new GoogleAuthProvider()
@@ -45,16 +36,17 @@
   }
 </script>
 
-<div class="absolute right-5 top-5">
+<div class="absolute right-5 top-5 flex items-center gap-2">
+  <p class="text-gray-800">
+    Logged in as {user?.displayName}
+  </p>
   <DropdownMenu>
     <DropdownMenuTrigger class="rounded-full">
-      <div
-        class=" hover:cursor-pointer"
-      >
+      <div class=" hover:cursor-pointer">
         <Avatar.Root class="w-10 h-10">
           <Avatar.Image src={user?.photoURL} />
           <Avatar.Fallback>
-            <UserIcon />
+            <UserIcon color="gray" />
           </Avatar.Fallback>
         </Avatar.Root>
       </div>
