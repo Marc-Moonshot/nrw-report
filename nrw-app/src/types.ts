@@ -16,7 +16,7 @@ type data = {
   total_flow: number
 }
 
-type Area = {
+type area = {
   billed_completed: string
   device_code: string | null
   nrw_m3: number
@@ -25,8 +25,19 @@ type Area = {
   total_flow: number
 }
 
+type device = {
+  date_registered: number
+  device_code: string
+  device_number: number
+  device_type: string
+  last_contact: number
+  last_status: string
+  nickname: string
+  rtu_assigned: number
+}
+
 type monthlyData = {
-  areas: Record<string, Area>
+  areas: Record<string, area>
   billed_complete: string
   device_code: string
   nrw_m3: number
