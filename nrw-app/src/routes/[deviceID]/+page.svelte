@@ -56,7 +56,7 @@
         `${PUBLIC_SERVER_ADDRESS}/nrw/daily?month=${year}-${paddedMonth}&device=${deviceID}`
       )
       if (!response.ok) {
-        errorNRW = `Request failed with status ${response.status}`
+        errorNRW = `Request failed with status: ${response.status}`
         return
       }
       const json = await response.json()
@@ -90,7 +90,7 @@
         `${PUBLIC_SERVER_ADDRESS}/nrw/monthly?month=${year}-${paddedMonth}&device=${deviceID}`
       )
       if (!response.ok) {
-        errorMonthly = `Request failed with status ${response.status}`
+        errorMonthly = `Request failed with status: ${response.status}`
         return
       }
       const json = await response.json()
@@ -120,7 +120,7 @@
         `${PUBLIC_SERVER_ADDRESS}/nrw/yearly?year=${year}&device=${deviceID}`
       )
       if (!response.ok) {
-        errorYearly = `Request failed with status ${response.status}`
+        errorYearly = `Request failed with status: ${response.status}`
         return
       }
       const json = await response.json()
@@ -192,7 +192,13 @@
   {#if loadingMonthly}
     <div class="text-gray-600 animate-pulse">Loading monthly data...</div>
   {:else if errorMonthly}
-    <div class="text-red-600 mb-3">{errorMonthly}</div>
+    <div class="text-red-600 mb-3">
+      {#if errorMonthly.includes("404")}
+        No monthly data found for device {deviceID}
+      {:else}
+        {errorMonthly}
+      {/if}
+    </div>
     <button
       class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
       onclick={() => retry("monthly")}
@@ -241,7 +247,13 @@
   {#if loadingYearly}
     <div class="text-gray-600 animate-pulse">Loading yearly NRW data...</div>
   {:else if errorYearly}
-    <div class="text-red-600 mb-3">{errorYearly}</div>
+    <div class="text-red-600 mb-3">
+      {#if errorYearly.includes("404")}
+        No yearly data found for device {deviceID}
+      {:else}
+        {errorYearly}
+      {/if}
+    </div>
     <button
       class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
       onclick={() => retry("yearly")}
@@ -260,7 +272,13 @@
   {#if loadingNRW}
     <div class="text-gray-600 animate-pulse">Loading daily NRW data...</div>
   {:else if errorNRW}
-    <div class="text-red-600 mb-3">{errorNRW}</div>
+    <div class="text-red-600 mb-3">
+      {#if errorNRW.includes("404")}
+        No daily data found for device {deviceID}
+      {:else}
+        {errorNRW}
+      {/if}
+    </div>
     <button
       class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
       onclick={() => retry("daily")}
