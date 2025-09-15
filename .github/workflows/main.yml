@@ -1,14 +1,14 @@
 name: Deploy on main branch push
 
-# on:
-#   push:
-#     branches:
-#       - main
-#   pull_request:
-#     branches:
-#       - main
-#     types:
-#       - closed
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+    types:
+      - closed
 
 jobs:
   deploy:
