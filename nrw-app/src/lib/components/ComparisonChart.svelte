@@ -4,31 +4,24 @@
   const {
     data,
   }: {
-    data: data
+    data: monthlyData
   } = $props()
-  const month = new Date(data?.month)?.toLocaleDateString("PH", {
-    month: "long",
-  })
 
-  const breakdownData = $derived(
+  let chartData = $derived(
     data
-      ? data.daily_nrws.map((nrw) => ({
-          date: nrw.date.split("-")[2],
-          billed: nrw.est_billed,
-          nrw: nrw.est_nrw,
+      ? Object.entries(data).map(([wtp, values]) => ({
+          wtp,
+          billed: values.total_flow,
+          nrw: values.nrw_m3,
         }))
       : []
   )
 </script>
 
-<div class="flex flex-col w-full h-[30rem] border rounded-sm p-4">
-  <p class="flex mx-auto mb-2 font-semibold">
-    [{month}] Billed Water vs NRW
-  </p>
-
+<div class="flex flex-col w-[20rem] h-[30rem] border rounded-sm p-4">
   <BarChart
-    data={breakdownData}
-    x="date"
+    data={chartData}
+    x="wtp"
     series={[
       { key: "billed", color: "var(--chart-2)" },
       { key: "nrw", color: "var(--chart-1)" },
@@ -47,7 +40,7 @@
         root: { class: "bg-zinc-100" },
         header: {
           class: "text-teal-600",
-          format: (d) => `${month} ${d}`,
+          // format: (d) => `${month} ${d}`,
         },
         item: { format: "metric" },
       },

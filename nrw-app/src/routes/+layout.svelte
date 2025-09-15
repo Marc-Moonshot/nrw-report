@@ -63,10 +63,10 @@
 {:else}
   <!-- Authenticated layout -->
   <link rel="icon" href={favicon} />
-  <main class="flex w-screen min-h-screen bg-gray-50">
+  <main class="flex min-h-screen bg-gray-50">
     <AppAvatar {user} />
     <!-- Main content -->
-    <section class="flex">
+    <section class="flex mx-auto">
       {@render children?.()}
     </section>
   </main>
