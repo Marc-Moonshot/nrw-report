@@ -172,7 +172,7 @@
   // $inspect(yearlyData)
 </script>
 
-<div class="flex flex-col items-center p-8 gap-4">
+<div class="flex flex-col w-full items-center p-8 gap-4">
   <input
     type="month"
     value={formattedMonth}
@@ -185,7 +185,7 @@
 
   <button
     onclick={() => goto("/")}
-    class="rounded-md text-3xl text-gray-600 absolute left-5 hover:cursor-pointer hover:bg-gray-300 px-2 duration-200 ease-in-out transition-colors"
+    class="rounded-md text-3xl text-gray-600 absolute left-10 top-5 hover:cursor-pointer hover:bg-gray-300 px-2 duration-200 ease-in-out transition-colors"
   >
     {"<"}
   </button>
@@ -279,7 +279,7 @@
       Retry
     </button>
   {:else if yearlyData}
-    <div class="text-green-700">Daily NRW data loaded.</div>
+    <div class="text-green-700">Yearly NRW data loaded.</div>
     <MonthlyChart data={yearlyData} />
   {/if}
 </div>
