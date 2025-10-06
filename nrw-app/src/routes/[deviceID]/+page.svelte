@@ -139,11 +139,11 @@
     else getYearlyData()
   }
 
-  onMount(() => {
-    getNRWData()
-    getMonthlyData()
-    getYearlyData()
-  })
+  // onMount(() => {
+  //   getNRWData()
+  //   getMonthlyData()
+  //   getYearlyData()
+  // })
 
   $effect(() => {
     year
