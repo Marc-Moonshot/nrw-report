@@ -281,7 +281,7 @@
   {:else if yearlyData}
     <div class="flex flex-col justify-center mt-2 text-green-700">
       <p class="w-fit mx-auto">Yearly NRW data loaded.</p>
-      <div class="flex gap-2 p-4 flex-col w-[80rem]">
+      <div class="flex gap-2 p-4 flex-col max-w-[80rem]">
         <MonthlyChart data={yearlyData} />
       </div>
     </div>

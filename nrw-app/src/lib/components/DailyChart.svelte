@@ -15,8 +15,43 @@
         )
       : []
   )
+
+  // let zoomLevel = $state(1)
+  // let offset = $state(0)
+  // let hoverDate: number | null = null
+
+  // function zoomIn() {
+  //   zoomLevel = Math.min(zoomLevel + 0.5, 10)
+  // }
+
+  // function zoomOut() {
+  //   zoomLevel = Math.max(zoomLevel - 0.5, 1)
+  // }
+
+  // const zoomedDomain = $derived(() => {
+  //   const total = Array.from(new Set(chartData.map((d) => d.date))).sort(
+  //     (a, b) => a - b
+  //   )
+  //   const visibleCount = Math.ceil(total.length / zoomLevel)
+
+  //   const maxStart = total.length - visibleCount
+  //   const startIndex = Math.floor(offset * maxStart)
+
+  //   return total.slice(startIndex, startIndex + visibleCount)
+  // })
+
+  // $effect(() => {
+  //   console.log("domain", zoomedDomain())
+  // })
+
+  // $inspect(zoomLevel)
 </script>
 
+<!-- onwheel={(e) => {
+    e.preventDefault()
+    if (e.deltaY < 0) zoomIn()
+    else zoomOut()
+  }} -->
 <div class="flex flex-col w-full h-[30rem] border rounded-sm p-4">
   <p class="flex mx-auto">Daily</p>
 
@@ -24,7 +59,6 @@
     data={chartData}
     x="date"
     series={[
-      // { key: "nrw_percent", label: "NRW %", color: "var(--chart-2)" },
       { key: "daily_flow", label: "Flow (m³)", color: "var(--chart-2)" },
       { key: "nrw_m3", label: "NRW (m³)", color: "var(--chart-1)" },
     ]}
