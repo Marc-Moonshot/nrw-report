@@ -172,7 +172,7 @@
   // $inspect(yearlyData)
 </script>
 
-<div class="flex flex-col items-center min-w-[80rem] p-8 gap-4">
+<div class="flex flex-col items-center p-8 gap-4">
   <input
     type="month"
     value={formattedMonth}
@@ -189,6 +189,7 @@
   >
     {"<"}
   </button>
+
   {#if loadingMonthly}
     <div class="text-gray-600 animate-pulse">Loading monthly data...</div>
   {:else if errorMonthly}
@@ -208,7 +209,7 @@
   {:else if monthlyData}
     <div class="flex flex-col justify-center mt-2 text-green-700">
       <p class="w-fit mx-auto">Monthly NRW data loaded.</p>
-      <div class="flex gap-1">
+      <div class="flex gap-1 flex-wrap justify-center">
         <StatCard
           data={Number.parseFloat(
             firstValue?.billed_completed.substring(0, 5)!
@@ -236,10 +237,6 @@
           title={"NRW percentage"}
           unit={"%"}
         />
-      </div>
-      <div class="flex gap-2 p-4 flex-col w-[80rem]">
-        <!-- <MonthlyChart data={yearlyData} /> -->
-        <!-- <ComparisonChart data={monthlyData} /> -->
       </div>
     </div>
   {/if}

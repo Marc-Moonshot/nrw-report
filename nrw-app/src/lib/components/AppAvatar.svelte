@@ -36,8 +36,8 @@
   }
 </script>
 
-<div class="absolute right-5 top-5 flex items-center gap-2">
-  <p class="text-gray-800">
+<div class="relative ml-auto right-5 top-5 flex items-center gap-2">
+  <p class="text-gray-800 max-[800px]:hidden">
     Logged in as {user?.displayName}
   </p>
   <DropdownMenu>
