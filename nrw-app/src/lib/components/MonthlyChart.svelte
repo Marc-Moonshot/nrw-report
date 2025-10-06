@@ -6,7 +6,9 @@
   const today = new Date()
   const thisMonth = today.getUTCMonth() + 1
   const thisYear = today.getUTCFullYear()
-  const formattedDate = `${thisYear}_${thisMonth}`
+  const formattedDate = `${thisYear}-${thisMonth}`
+
+  console.log(formattedDate)
 
   const chartData = $derived(
     data
