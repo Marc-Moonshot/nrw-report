@@ -3,12 +3,17 @@
 
   const { data }: { data: yearlyData | null } = $props()
 
+  const today = new Date()
+  const thisMonth = today.getUTCMonth() + 1
+  const thisYear = today.getUTCFullYear()
+  const formattedDate = `${thisYear}_${thisMonth}`
+
   const chartData = $derived(
     data
       ? Object.entries(data).flatMap(([month, wtpValues]) =>
           Object.entries(wtpValues).map(([wtp, values]) => ({
             month,
-            percent: values.nrw_percent / 100,
+            percent: month === formattedDate ? 0 : values.nrw_percent / 100,
           }))
         )
       : []

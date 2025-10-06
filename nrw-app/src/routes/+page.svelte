@@ -27,7 +27,7 @@
     SELECT A STATION
   </h1>
 
-  <div class="flex gap-2 flex-wrap">
+  <div class="flex gap-2 flex-wrap justify-center">
     {#each devices as device}
       <Card data={device} />
     {/each}
