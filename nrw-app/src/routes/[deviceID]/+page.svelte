@@ -244,6 +244,27 @@
     </div>
   {/if}
 
+  {#if loadingNRW}
+    <div class="text-gray-600 animate-pulse">Loading daily NRW data...</div>
+  {:else if errorNRW}
+    <div class="text-red-600 mb-3">
+      {#if errorNRW.includes("404")}
+        No daily data found for device {deviceID}
+      {:else}
+        {errorNRW}
+      {/if}
+    </div>
+    <button
+      class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
+      onclick={() => retry("daily")}
+    >
+      Retry
+    </button>
+  {:else if dailyData}
+    <div class="text-green-700">Daily NRW data loaded.</div>
+    <DailyChart data={dailyData} />
+  {/if}
+
   {#if loadingYearly}
     <div class="text-gray-600 animate-pulse">Loading yearly NRW data...</div>
   {:else if errorYearly}
@@ -267,26 +288,5 @@
         <MonthlyChart data={yearlyData} />
       </div>
     </div>
-  {/if}
-
-  {#if loadingNRW}
-    <div class="text-gray-600 animate-pulse">Loading daily NRW data...</div>
-  {:else if errorNRW}
-    <div class="text-red-600 mb-3">
-      {#if errorNRW.includes("404")}
-        No daily data found for device {deviceID}
-      {:else}
-        {errorNRW}
-      {/if}
-    </div>
-    <button
-      class="px-4 py-2 rounded-lg bg-red-500 text-white hover:bg-red-600 transition"
-      onclick={() => retry("daily")}
-    >
-      Retry
-    </button>
-  {:else if dailyData}
-    <div class="text-green-700">Daily NRW data loaded.</div>
-    <DailyChart data={dailyData} />
   {/if}
 </div>
