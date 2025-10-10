@@ -1,0 +1,3 @@
+[submodule "temporal-guru"]
+	path = temporal-guru
+	url = git@github.com:Marc-Moonshot/temporal-guru.git
