@@ -185,7 +185,7 @@ def get_daily_nrw():
     device = request.args.get("device")
 
     if not date_str or not device:
-        return jsonify({"error": "Missing 'date' or 'device' parameter"}), 400
+        return jsonify({"error": "Missing 'month' or 'device' parameter"}), 400
 
     try:
         fmt = "%Y-%m" if len(date_str) == 7 else "%Y-%m-%d"
