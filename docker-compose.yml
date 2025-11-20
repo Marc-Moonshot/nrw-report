@@ -15,6 +15,20 @@ services:
     restart: always
     env_file:
       - ./nrw-app/.env
+  nrw-db:
+    build:
+      context: ./database
+      dockerfile: dockerfile
+    ports:
+      - "5432"
+  nrw-sync:
+    build:
+      conext: ./temporal-guru
+      dockerfile: dockerfile
+    ports:
+      - "9000"
+    env_file:
+      - ./temporal-guru/.env
   nginx:
     image: "nginx:alpine"
     ports:
