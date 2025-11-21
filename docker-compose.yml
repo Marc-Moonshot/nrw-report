@@ -23,7 +23,7 @@ services:
       - "5432"
   nrw-sync:
     build:
-      conext: ./temporal-guru
+      context: ./temporal-guru
       dockerfile: dockerfile
     ports:
       - "9000"
