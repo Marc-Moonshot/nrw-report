@@ -13,18 +13,20 @@ services:
     ports:
       - "3000"
     restart: always
-    env_file:
-      - ./nrw-app/.env
+    env_file: - ./nrw-app/.env
   nrw-db:
     build:
       context: ./database
       dockerfile: dockerfile
     ports:
-      - "5432"
+      - "5432:5432"
+    env_file:
+      ./database/.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
   nrw-sync:
     build:
       context: ./temporal-guru
-      dockerfile: dockerfile
     ports:
       - "9000"
     env_file:
