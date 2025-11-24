@@ -13,7 +13,8 @@ services:
     ports:
       - "3000"
     restart: always
-    env_file: - ./nrw-app/.env
+    env_file: 
+      - ./nrw-app/.env
   nrw-db:
     build:
       context: ./database
@@ -43,3 +44,6 @@ services:
       - nrw-api
       - nrw-app
     restart: always
+
+volumes:
+  postgres_data:

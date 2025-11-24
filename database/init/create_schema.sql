@@ -6,7 +6,7 @@ CREATE TABLE cache_data.cacheEntry (
     id BIGSERIAL  PRIMARY KEY,  
     endpoint      TEXT NOT NULL,
     query_params  JSONB,
-    query_hash    TEXT PRIMARY KEY,
+    query_hash    TEXT,
     response      JSONB,
     fetched_at    TIMESTAMPTZ DEFAULT NOW(),
     expires_at    TIMESTAMPTZ,
