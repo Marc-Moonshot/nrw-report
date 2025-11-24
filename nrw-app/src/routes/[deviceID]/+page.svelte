@@ -1,10 +1,8 @@
 <script lang="ts">
   import { page } from "$app/state"
   import { getCache, setCache } from "$lib/cache"
-  import ComparisonChart from "$lib/components/ComparisonChart.svelte"
   import MonthlyChart from "$lib/components/MonthlyChart.svelte"
   import { PUBLIC_SERVER_ADDRESS } from "$env/static/public"
-  import { onMount } from "svelte"
   import StatCard from "$lib/components/StatCard.svelte"
   import DailyChart from "$lib/components/DailyChart.svelte"
   import { goto } from "$app/navigation"
