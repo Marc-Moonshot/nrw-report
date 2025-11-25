@@ -3,15 +3,15 @@ services:
     build: 
       context: .
       dockerfile: dockerfile
-    ports:
-      - "8000"
+    # ports:
+    #   - "8000:8000"
     restart: always
   nrw-app:
     build:
       context: ./nrw-app
       dockerfile: dockerfile
-    ports:
-      - "3000"
+    # ports:
+    #   - "3000"
     restart: always
     env_file: 
       - ./nrw-app/.env
@@ -28,8 +28,8 @@ services:
   nrw-sync:
     build:
       context: ./temporal-guru
-    ports:
-      - "9000"
+    # ports:
+    #   - "9000"
     env_file:
       - ./temporal-guru/.env
   nginx:
